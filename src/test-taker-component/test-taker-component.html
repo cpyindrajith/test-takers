@@ -53,7 +53,7 @@
 
             .img-section img {
                 border-radius: 50%;
-                box-shadow: 0 1px 8px rgb(0 0 0 / 32%);
+                height: 58px;
             }
 
             .profile-section {
@@ -104,9 +104,9 @@
           <div class="custom-panel">
               <!-- Image thumbnail start -->
               <div class="img-section">
-                  <img src="{{item.picture.medium}}" alt="No image" title="{{item.name.title}} . {{item.name.first}} {{item.name.last}}"/>
+                  <img src="../../images/profile.png" alt="No image" title="{{item.firstName}}  {{item.lastName}}"/>
                   <div class="name-section">
-                      <label>{{item.name.title}} . {{item.name.first}} {{item.name.last}} </label>
+                      <label>{{item.firstName}}  {{item.lastName}}</label>
                   </div>
               </div>
               <!-- Image thumbnail end -->
@@ -114,56 +114,20 @@
               <div class="profile-section">
                   <div class="custom-row">
                       <div class="col-40">
-                          <span class="span-field">Email</span>
+                          <span class="span-field">First Name</span>
                           <span class="span-col">:</span>
                       </div>
                       <div class="col-60">
-                          <span class="span-val">{{item.email}} </span>
+                          <span class="span-val">{{item.firstName}} </span>
                       </div>
                   </div>
                   <div class="custom-row">
                       <div class="col-40">
-                          <span class="span-field">Phone</span>
+                          <span class="span-field">Last Name</span>
                           <span class="span-col">:</span>
                       </div>
                       <div class="col-60">
-                          <span class="span-val">{{item.phone}} </span>
-                      </div>
-                  </div>
-                  <div class="custom-row">
-                      <div class="col-40">
-                          <span class="span-field">Cell</span>
-                          <span class="span-col">:</span>
-                      </div>
-                      <div class="col-60">
-                          <span class="span-val">{{item.cell}} </span>
-                      </div>
-                  </div>
-                  <div class="custom-row">
-                      <div class="col-40">
-                          <span class="span-field">Gender</span>
-                          <span class="span-col">:</span>
-                      </div>
-                      <div class="col-60">
-                          <span class="span-val">{{item.gender}} </span>
-                      </div>
-                  </div>
-                  <div class="custom-row">
-                    <div class="col-40">
-                        <span class="span-field">Age</span>
-                        <span class="span-col">:</span>
-                    </div>
-                    <div class="col-60">
-                        <span class="span-val">{{item.dob.age}} </span>
-                    </div>
-                  </div>
-                  <div class="custom-row">
-                      <div class="col-40">
-                          <span class="span-field">Location </span>
-                          <span class="span-col">:</span>
-                      </div>
-                      <div class="col-60">
-                          <span class="span-val"> {{item.location.street.name}}, {{item.location.city}}, {{item.location.state}} ,{{item.location.country}}</span>
+                          <span class="span-val">{{item.lastName}} </span>
                       </div>
                   </div>
               </div>
