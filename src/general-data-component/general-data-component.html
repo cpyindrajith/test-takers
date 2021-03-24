@@ -27,10 +27,11 @@
           _getData() {
           
            this._getResource({ 
-              url: 'https://randomuser.me/api?results=100',
+              url: 'https://hr.oat.taocloud.org/v1/users?limit=20&offset=0',
               onLoad(e) {
 
-                  this.set('data', JSON.parse(e.target.response).results);
+                console.log(JSON.parse(e.target.response));
+                  this.set('data', JSON.parse(e.target.response));
     
               }
             });
