@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+
+<dom-module id="general-data-component">
+
+    <script>
+      (function() {
+
+
+        class GeneralDataComponent extends Polymer.Element {
+   
+          static get is() {
+            return 'general-data-component';
+          }
+          static get properties() {
+            return {
+              data: {
+                type: Object,
+                notify: true
+              }
+            };
+          }
+          ready() {
+            super.ready();
+            this._getData();
+          }
+          _getData() {
+          
+           this._getResource({ 
+              url: 'https://hr.oat.taocloud.org/v1/users?limit=20&offset=0',
+              onLoad(e) {
+
+                  this.set('data', JSON.parse(e.target.response));
+    
+              }
+            });
+          }
+  
+          _getResource(rq) {
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener('load', rq.onLoad.bind(this));
+            xhr.open('GET', rq.url);
+            xhr.send();
+          }
+        }
+        customElements.define(GeneralDataComponent.is, GeneralDataComponent);
+  
+      })();
+    </script>
+  
+  </dom-module>
+
