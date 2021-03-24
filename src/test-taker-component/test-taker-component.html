@@ -1,0 +1,195 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<!-- importing generral component for getting web api response -->
+<link rel="import" href="../general-data-component/general-data-component.html"> 
+
+<dom-module id="test-taker-component">
+  <template>
+    <!--CSS start -->
+    <style>
+           .custom-wrapper {
+                width: 90%;
+                margin: auto;
+            }
+            .custom-wrapper .custom-panel {
+                display: flex;
+                box-shadow: 0 1px 8px rgb(0 0 0 / 17%);
+                transition: box-shadow 0.3s ease-in-out;
+                margin-top: 16px;
+                padding: 20px 25px 20px 25px;
+                border-radius: 7px;
+            }
+
+            .fm-custom-card:hover {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            }
+
+            .custom-wrapper .custom-panel:hover {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            }
+
+            .custom-wrapper .custom-panel .custom-row {
+                display: flex;
+                height: 27px;
+            }
+
+            .custom-wrapper .custom-panel .custom-row .col-40 {
+                width: 10%;
+                padding: 0px 8px;
+            }
+
+            .custom-wrapper .custom-panel .custom-row .col-60 {
+                padding: 0px 8px;
+            }
+
+            .img-section {
+                width: 15%;
+                text-align: center;
+                align-self: center;
+            }
+
+            .img-section img {
+                border-radius: 50%;
+                box-shadow: 0 1px 8px rgb(0 0 0 / 32%);
+            }
+
+            .profile-section {
+                width: 80%;
+            }
+
+            .span-field ,.span-val{
+                color: teal;
+                font-size: 14px;
+            }
+
+            .span-col {
+                float: right;
+            }
+
+
+            .name-section label {
+                font-weight: 600;
+                color: #2196f3;
+            }
+
+            .result-list-count {
+                width: 90%;
+                margin: auto;
+                display: flow-root;
+            }
+
+            .result-list-count label {
+                font-size: 14px;
+                color: #949090;
+                float: right;
+            }
+            .result-list-count h2{
+                color: #2196f3;
+                text-shadow: 1px;
+                text-shadow: 0px 1px 2px #42454773;
+            }
+    </style>
+    <!-- CSS End -->
+    <general-data-component data="{{data}}"></general-data-component>
+    <div class="result-list-count">
+        <h2 >Test Takers</h2>
+        <label>Showing {{data.length}} Results</label>
+    </div>
+    <!-- To display list of data using dom repeat -->
+    <template is="dom-repeat" items="{{data}}">
+      <div class="custom-wrapper">
+          <div class="custom-panel">
+              <!-- Image thumbnail start -->
+              <div class="img-section">
+                  <img src="{{item.picture.medium}}" alt="No image" title="{{item.name.title}} . {{item.name.first}} {{item.name.last}}"/>
+                  <div class="name-section">
+                      <label>{{item.name.title}} . {{item.name.first}} {{item.name.last}} </label>
+                  </div>
+              </div>
+              <!-- Image thumbnail end -->
+              <!-- Profile details section start -->
+              <div class="profile-section">
+                  <div class="custom-row">
+                      <div class="col-40">
+                          <span class="span-field">Email</span>
+                          <span class="span-col">:</span>
+                      </div>
+                      <div class="col-60">
+                          <span class="span-val">{{item.email}} </span>
+                      </div>
+                  </div>
+                  <div class="custom-row">
+                      <div class="col-40">
+                          <span class="span-field">Phone</span>
+                          <span class="span-col">:</span>
+                      </div>
+                      <div class="col-60">
+                          <span class="span-val">{{item.phone}} </span>
+                      </div>
+                  </div>
+                  <div class="custom-row">
+                      <div class="col-40">
+                          <span class="span-field">Cell</span>
+                          <span class="span-col">:</span>
+                      </div>
+                      <div class="col-60">
+                          <span class="span-val">{{item.cell}} </span>
+                      </div>
+                  </div>
+                  <div class="custom-row">
+                      <div class="col-40">
+                          <span class="span-field">Gender</span>
+                          <span class="span-col">:</span>
+                      </div>
+                      <div class="col-60">
+                          <span class="span-val">{{item.gender}} </span>
+                      </div>
+                  </div>
+                  <div class="custom-row">
+                    <div class="col-40">
+                        <span class="span-field">Age</span>
+                        <span class="span-col">:</span>
+                    </div>
+                    <div class="col-60">
+                        <span class="span-val">{{item.dob.age}} </span>
+                    </div>
+                  </div>
+                  <div class="custom-row">
+                      <div class="col-40">
+                          <span class="span-field">Location </span>
+                          <span class="span-col">:</span>
+                      </div>
+                      <div class="col-60">
+                          <span class="span-val"> {{item.location.street.name}}, {{item.location.city}}, {{item.location.state}} ,{{item.location.country}}</span>
+                      </div>
+                  </div>
+              </div>
+              <!-- Profile details section end-->
+          </div>
+      </div>
+    </template>
+  </template>
+
+  <script>
+
+
+    class TestTakerComponent extends Polymer.Element {
+      static get is() { return 'test-taker-component'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'test-taker-component'
+          }
+        };
+      }
+      
+
+    }
+
+    window.customElements.define(TestTakerComponent.is, TestTakerComponent);
+  </script>
+</dom-module>
